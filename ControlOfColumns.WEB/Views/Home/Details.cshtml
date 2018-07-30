@@ -1,0 +1,70 @@
+﻿@using ConfigXmlHelper
+@model ControlOfColumns.WEB.Models.ProductsViewModels
+
+@{
+    ViewBag.Title = "Details";
+    string path = HttpContext.Current.Server.MapPath("~/App_Config/app_config.xml");
+    ConfigXmlReader reader = new ConfigXmlReader(path);
+}
+
+<h2>Details</h2>
+
+<div>
+    <dl class="dl-horizontal">
+        @if (reader.ProductEnabled["Name"])
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+        } 
+        @if (reader.ProductEnabled["Price"])
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Price)
+            </dd>
+        }
+        @if (reader.ProductEnabled["Description"])
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+        }
+        @if (reader.ProductEnabled["Quantity"])
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Quantity)
+            </dd>
+        }
+        @if (reader.ProductEnabled["Commnets"])
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.Commnets)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Commnets)
+            </dd>
+        }
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("К списку", "Index")
+</p>

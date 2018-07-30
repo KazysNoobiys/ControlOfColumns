@@ -1,0 +1,78 @@
+﻿@using ConfigXmlHelper
+@model ControlOfColumns.WEB.Models.ProductsViewModels
+
+@{
+    ViewBag.Title = "Удалить";
+    string path = HttpContext.Current.Server.MapPath("~/App_Config/app_config.xml");
+    ConfigXmlReader reader = new ConfigXmlReader(path);
+}
+
+<h2>Удалить</h2>
+
+<h3>Вы уверены что хотите удалить эту запись?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        @if (reader.ProductEnabled["Name"])
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+        }
+        @if (reader.ProductEnabled["Price"])
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Price)
+            </dd>
+        }
+        @if (reader.ProductEnabled["Description"])
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+        }
+        @if (reader.ProductEnabled["Quantity"])
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Quantity)
+            </dd>
+        }
+        @if (reader.ProductEnabled["Commnets"])
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.Commnets)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Commnets)
+            </dd>
+        }
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Удалить" class="btn btn-default" /> |
+            @Html.ActionLink("К списку", "Index")
+        </div>
+    }
+</div>

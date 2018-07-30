@@ -1,0 +1,156 @@
+﻿@using ConfigXmlHelper
+@model ControlOfColumns.WEB.Models.ColumnsAdmin
+@{
+    ViewBag.Title = "Index";
+    string path = HttpContext.Current.Server.MapPath("~/App_Config/app_config.xml");
+    ConfigXmlReader reader = new ConfigXmlReader(path);
+}
+
+<h2>Index</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-group">
+        @{
+            Dictionary<string, object> d1 = new Dictionary<string, object>();
+            if (reader.ProductEnabled["Name"])
+            {
+                d1.Add("checked", "checked");
+            }
+        }
+
+        <div class="col-md-offset-1 col-md-9">
+            <div class="checkbox">
+                @Html.LabelFor(m => m.NameEnabled)
+                @if (reader.ProductRequired["Name"])
+                {
+                    @Html.HiddenFor(model => model.NameEnabled)
+                    d1.Add("disabled", "disabled");
+                    @Html.CheckBoxFor(model => model.NameEnabled, d1)
+                }
+                else
+                {
+                    @Html.CheckBoxFor(model => model.NameEnabled, d1)
+                }
+            </div>
+        </div>
+
+    </div>
+    <div class="form-group">
+        @{
+            Dictionary<string, object> d2 = new Dictionary<string, object>();
+            if (reader.ProductEnabled["Price"])
+            {
+                d2.Add("checked", "checked");
+            }
+        }
+
+        <div class="col-md-offset-1 col-md-9">
+            <div class="checkbox">
+                @Html.LabelFor(m => m.PriceEnabled)
+                @if (reader.ProductRequired["Price"])
+                {
+                    @Html.HiddenFor(model => model.PriceEnabled)
+                    d2.Add("disabled", "disabled");
+                    @Html.CheckBoxFor(model => model.PriceEnabled, d2)
+                }
+                else
+                {
+                    @Html.CheckBoxFor(model => model.PriceEnabled, d2)
+                }
+            </div>
+        </div>
+
+    </div>
+    <div class="form-group">
+        @{
+            Dictionary<string, object> d3 = new Dictionary<string, object>();
+           
+            if (reader.ProductEnabled["Description"])
+            {
+                d3.Add("checked", "checked");
+            }
+        }
+
+        <div class="col-md-offset-1 col-md-9">
+            <div class="checkbox">
+               
+                @Html.LabelFor(m => m.DescriptionEnabled)
+                @if (reader.ProductRequired["Description"])
+                {
+                    @Html.HiddenFor(model => model.DescriptionEnabled)
+                    d3.Add("disabled", "disabled");
+                    @Html.CheckBoxFor(model => model.DescriptionEnabled, d3)
+                }
+                else
+                {
+                    @Html.CheckBoxFor(model => model.DescriptionEnabled, d3)
+                }
+            </div>
+        </div>
+
+    </div>
+    <div class="form-group">
+        @{
+            Dictionary<string, object> d4 = new Dictionary<string, object>();
+          
+            if (reader.ProductEnabled["Name"])
+            {
+                d4.Add("checked", "Commnets");
+            }
+        }
+
+        <div class="col-md-offset-1 col-md-9">
+            <div class="checkbox">
+               
+                @Html.LabelFor(m => m.CommnetsEnabled)
+                @if (reader.ProductRequired["Commnets"])
+                {
+                    @Html.HiddenFor(model => model.CommnetsEnabled)
+                    d4.Add("disabled", "disabled");
+                    @Html.CheckBoxFor(model => model.CommnetsEnabled, d4)
+                }
+                else
+                {
+                    @Html.CheckBoxFor(model => model.CommnetsEnabled, d4)
+                }
+            </div>
+        </div>
+
+    </div>
+    <div class="form-group">
+        @{
+            Dictionary<string, object> d5 = new Dictionary<string, object>();
+         
+            if (reader.ProductEnabled["Quantity"])
+            {
+                d5.Add("checked", "checked");
+            }
+        }
+
+        <div class="col-md-offset-1 col-md-9">
+            <div class="checkbox">
+             
+                @Html.LabelFor(m => m.QuantityEnabled)
+                @if (reader.ProductRequired["Quantity"])
+                {
+                    @Html.HiddenFor(model => model.QuantityEnabled)
+                    d5.Add("disabled", "disabled");
+                    @Html.CheckBoxFor(model => model.QuantityEnabled, d5)
+                }
+                else
+                {
+                    @Html.CheckBoxFor(model => model.QuantityEnabled, d5)
+                }
+            </div>
+        </div>
+
+    </div>
+    <div class="form-group">
+        <div class="col-md-10">
+            <input type="submit" value="Сохранить" />
+        </div>
+    </div>
+            }

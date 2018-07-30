@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<columns>
+  <colum>
+    <name>Name</name>
+    <required>true</required>
+    <enabled>True</enabled>
+  </colum>
+  <colum>
+    <name>Price</name>
+    <required>true</required>
+    <enabled>True</enabled>
+  </colum>
+  <colum>
+    <name>Quantity</name>
+    <required>false</required>
+    <enabled>True</enabled>
+  </colum>
+  <colum>
+    <name>Description</name>
+    <required>false</required>
+    <enabled>True</enabled>
+  </colum>
+  <colum>
+    <name>Commnets</name>
+    <required>false</required>
+    <enabled>True</enabled>
+  </colum>
+</columns>
